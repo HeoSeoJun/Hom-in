@@ -1,5 +1,8 @@
 package com.care.homin.login;
 
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.care.homin.login.dto.LoginDTO;
 import com.care.homin.login.service.LoginServiceImpl;
+import com.care.homin.login.config.KakaoConfig;
 
 @Controller
 public class LoginController {
@@ -34,9 +38,27 @@ public class LoginController {
 		return "index";
 	}
 	
+	@Autowired KakaoConfig kakao;
+	@RequestMapping("kakaoLogin")
+	public String kakaoLogin(String code, HttpSession session) {
+		logger.warn("code : " + code);
+		
+		String access_Token = kakao.getAccessToken(code);
+		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
+		session.setAttribute("nickname", userInfo.get("nickname"));
+		session.setAttribute("id", userInfo.get("email"));
+		session.setAttribute("access_Token", access_Token);
+		return "login/loginForm";
+	}
+	
 	@RequestMapping("logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
+	public String logout(HttpServletRequest req) {
+		String access_Token = (String) req.getSession().getAttribute("access_Token");
+		kakao.logout(access_Token);
+		
+		req.getSession().invalidate();
 		return "index";
 	}
+	
+	
 }
