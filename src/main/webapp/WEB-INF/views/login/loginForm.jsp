@@ -7,20 +7,35 @@
 </c:if>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-	function check() {
-		id = document.getElementById('id').value;
-		pw = document.getElementById('pw').value;
+	function idPwCheck() {
+		i = document.getElementById('id').value;
+		p = document.getElementById('pw').value;
 		
-		if (id == ""){
+		if (i == ""){
 			alert('아이디를 입력해주세요');
 			return;			
 		}
-		if (pw == ""){
+		if (p == ""){
 			alert('비밀번호를 입력해주세요');
 			return;			
 		}
 		
-		document.getElementById('f').submit();
+		var inputI = {"id":i, "pw":p}
+		$.ajax({
+			url: "idPwCheck", type: "POST",
+			data: JSON.stringify(inputI), // 문자열 데이터를 JSON 객체로 변환
+			contentType: "application/json; charset=utf-8", // 보낼 데이터의 타입 설정
+			dataType: "json", // 받을 데이터의 자료형을 설정
+			
+			success : function(result){
+				$('#msg').text(result.msg);
+				if (result.msg == "" || result.msg == null)
+					document.getElementById('f').submit();
+			},
+			error : function(){
+				alert('로그인 에러발생');
+			}
+		})
 	}
 </script>
 
@@ -51,8 +66,11 @@
 			<td><input style="width: 350" type=password id="pw" name='pw' placeholder="비밀번호"/></td>
 		</tr>
 		<tr>
+			<td><label id="msg" style="color:red;"></label></td>
+		</tr>
+		<tr>
 			<td colspan=2 align='center'>
-				<input type="button" value='로그인' style="width: 86px;" onclick="check()"/>
+				<input type="button" value='로그인' style="width: 86px;" onclick="idPwCheck()"/>
 				<input type=reset value='취소' style="width: 86px; "/> 
 			</td>
 		</tr>

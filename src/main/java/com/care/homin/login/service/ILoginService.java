@@ -1,7 +1,8 @@
 package com.care.homin.login.service;
 
 import com.care.homin.login.dto.LoginDTO;
+import com.care.homin.membership.dto.MemberDTO;
 
 public interface ILoginService {
-	public LoginDTO loginProc(LoginDTO loginDto);
+	public MemberDTO loginProc(LoginDTO loginDto);
 }

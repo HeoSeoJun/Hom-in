@@ -7,7 +7,7 @@
 	
 	<div>
 		<div>
-			<h3>안녕하세요. ${id }님</h3>
+			<h3>안녕하세요. ${sessionScope.nickname }님</h3>
 		</div>
 	</div>
 </div>

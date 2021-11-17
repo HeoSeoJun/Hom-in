@@ -1,16 +1,9 @@
 package com.care.homin.login.dto;
 
 public class LoginDTO {
-	private int no;
 	private String id;
 	private String pw;
 	
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
 	public String getId() {
 		return id;
 	}

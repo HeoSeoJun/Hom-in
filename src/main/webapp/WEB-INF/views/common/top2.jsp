@@ -37,7 +37,7 @@ hr {
 	<div id="login">
 		<c:choose>
 			<c:when test="${not empty sessionScope.id}">
-				<a href="/homin/mypage?id=${sessionScope.id }">${sessionScope.id }님의 마이 | </a>
+				<a href="/homin/mypage">${sessionScope.nickname }님의 마이 | </a>
 				<a href="/homin/logout">로그아웃</a>
 			</c:when>
 			<c:otherwise>
