@@ -111,7 +111,7 @@ public class KakaoConfig {
 	        //    요청에 필요한 Header에 포함될 내용
 	        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 	        int responseCode = conn.getResponseCode();
-	        System.out.println("responseCode : " + responseCode);
+//	        System.out.println("responseCode : " + responseCode);
 	    }catch (Exception e) {
 				// TODO: handle exception
 			}

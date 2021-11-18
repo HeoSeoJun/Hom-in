@@ -8,6 +8,7 @@
 	<select resultMap="loginDto" id="infoLogin" parameterType="String">
 		SELECT * FROM login_homin WHERE id = #{id}
 	</select>
+	
 	<resultMap type="com.care.homin.membership.dto.MemberDTO" id="memberDto">
 		<result property="no" column="no"/>
 		<result property="id" column="id"/>
@@ -17,6 +18,28 @@
 	</resultMap>
 	<select resultMap="memberDto" id="infoMember" parameterType="String">
 		SELECT * FROM member_homin WHERE id = #{id}
+	</select>
+	<resultMap type="com.care.homin.membership.dto.MemberDTO" id="mbDto">
+		<result property="no" column="no"/>
+		<result property="id" column="id"/>
+		<result property="nickname" column="nickname"/>
+		<result property="phone" column="phone"/>
+		<result property="email" column="email"/>
+	</resultMap>
+	<select resultMap="mbDto" id="infoMemberByNo" parameterType="int">
+		SELECT * FROM member_homin WHERE no = #{no}
+	</select>
+	
+	
+	<resultMap type="com.care.homin.membership.dto.MemberDTO" id="memberDtoList">
+		<result property="no" column="no"/>
+		<result property="id" column="id"/>
+		<result property="nickname" column="nickname"/>
+		<result property="phone" column="phone"/>
+		<result property="email" column="email"/>
+	</resultMap>
+	<select resultMap="memberDtoList" id="infoList">
+		SELECT * FROM member_homin
 	</select>
 	
 </mapper>
