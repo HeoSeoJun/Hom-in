@@ -1,6 +1,10 @@
 package com.care.homin.membership.dao;
 
+import org.springframework.stereotype.Repository;
+
+import com.care.homin.login.dto.LoginDTO;
 import com.care.homin.membership.dto.MemberDTO;
+import com.care.homin.membership.dto.PostcodeDTO;
 
 /*
 CREATE TABLE member_homin (
@@ -24,7 +28,12 @@ CONSTRAINT fk_postcode_homin FOREIGN KEY(id) REFERENCES login_homin ON DELETE CA
 );
 
  */
+@Repository
 public interface IMemberDAO {
 	MemberDTO memberProc(String id);
-
+	
+	int isExistId(String id);
+	public void insertLogin(LoginDTO login);
+	public void insertMember(MemberDTO member);
+	public void insertPost(PostcodeDTO post);
 }

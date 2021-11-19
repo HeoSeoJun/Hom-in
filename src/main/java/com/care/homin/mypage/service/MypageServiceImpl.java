@@ -2,9 +2,12 @@ package com.care.homin.mypage.service;
 
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.care.homin.login.LoginController;
 import com.care.homin.login.dto.LoginDTO;
 import com.care.homin.membership.dto.AllDTO;
 import com.care.homin.membership.dto.MemberDTO;
@@ -51,6 +54,11 @@ public class MypageServiceImpl implements IMypageService{
 		} else {
 			return null;
 		}
+	}
+	@Override
+	public boolean deleteProc(String id) {
+		boolean bool = mypageDao.deleteProc(id);
+		return bool;
 	}
 
 	
