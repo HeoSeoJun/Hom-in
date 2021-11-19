@@ -1,6 +1,8 @@
 package com.care.homin.membership.dto;
 
-public class MemberDTO {
+import com.care.homin.login.dto.LoginDTO;
+
+public class MemberDTO extends LoginDTO{
 	private int no;
 	private String id;
 	private String nickname;
