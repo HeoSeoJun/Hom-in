@@ -36,6 +36,13 @@ table {
 				<tr>
 					<td>이메일</td><td>${allDto.email }</td>
 				</tr>
+				<tr>
+					<td colspan="2" align="right">
+						<input type="button" value="수정">
+						<input type="button" value="회원탈퇴" onclick="location.href='/homin/mypage/info/confirmPw'">
+					</td>
+				</tr>
+				
 			</table>
 		</section>
 	</div>

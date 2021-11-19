@@ -9,4 +9,5 @@ public interface IMypageService {
 	public AllDTO infoMgmt(String id);
 	public ArrayList<MemberDTO> infoManage();
 	public AllDTO infoMgUs(int parseInt);
+	public boolean deleteProc(String id);
 }

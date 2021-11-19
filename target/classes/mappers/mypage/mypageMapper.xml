@@ -42,4 +42,7 @@
 		SELECT * FROM member_homin
 	</select>
 	
+	<delete id="deleteProc" parameterType="String">
+		DELETE FROM login_homin WHERE id=#{id}
+	</delete>
 </mapper>

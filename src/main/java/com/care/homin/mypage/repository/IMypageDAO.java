@@ -13,4 +13,5 @@ public interface IMypageDAO {
 	MemberDTO infoMember(String id);
 	MemberDTO infoMemberByNo(int no);
 	ArrayList<MemberDTO> infoList();
+	boolean deleteProc(String id);
 }
