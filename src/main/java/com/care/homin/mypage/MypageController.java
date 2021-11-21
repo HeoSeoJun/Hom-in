@@ -1,6 +1,5 @@
 package com.care.homin.mypage;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -18,6 +17,7 @@ import com.care.homin.login.dto.LoginDTO;
 import com.care.homin.login.service.ILoginService;
 import com.care.homin.membership.dto.AllDTO;
 import com.care.homin.membership.dto.MemberDTO;
+import com.care.homin.membership.dto.PostcodeDTO;
 import com.care.homin.mypage.service.IMypageService;
 
 @Controller
@@ -32,6 +32,7 @@ public class MypageController {
 		return "index";
 	}
 	
+	//사용자, 개인정보 조회
 	@RequestMapping("mypage/info/mgmt")
 	public String infoMgmt(Model model, String id) {
 		AllDTO allDto = mypageSvc.infoMgmt(id);
@@ -41,31 +42,21 @@ public class MypageController {
 		model.addAttribute("formpath", "mypage/info/mgmt");
 		return "index";
 	}
-	
-	@RequestMapping("mypage/info/manage")
-	public String infoManage(Model model) {
-		ArrayList<MemberDTO> list = mypageSvc.infoManage();
+	//사용자, 주소지 조회
+	@RequestMapping("mypage/info/addr")
+	public String addr(Model model, String id) {
+		PostcodeDTO pc = mypageSvc.addr(id);
 		
-		model.addAttribute("list", list);
-		model.addAttribute("formpath", "mypage/info/manage");
+		model.addAttribute("postCode", pc);
+		model.addAttribute("formpath", "mypage/info/addr");
 		return "index";
 	}
 	
-	@RequestMapping("mypage/info/mgus")
-	public String infoMgUs(Model model, String no) {
-		AllDTO allDto = mypageSvc.infoMgUs(Integer.parseInt(no));
-		
-		if (allDto != null)
-			model.addAttribute("allDto", allDto);
-		model.addAttribute("formpath", "mypage/info/mgus");
-		return "index";
-	}
-	
+	//사용자, 계정 탈퇴
 	@RequestMapping("mypage/info/confirmPw")
 	public String confirmPw(Model model) {
 		return "mypage/info/confirmPw";
 	}
-
 	@ResponseBody
 	@RequestMapping("mypage/info/pwCheck")
 	public HashMap<String, String> idPwCheck(LoginDTO loginDto, @RequestBody HashMap<String, String> map) {
@@ -84,7 +75,6 @@ public class MypageController {
 			map.put("msg", "");
 		return map;
 	}
-	
 	@RequestMapping("mypage/info/deleteProc")
 	public String deleteProc(LoginDTO loginDto, Model model, HttpSession session) {
 //		logger.warn("loginDto.getId() : " + loginDto.getId());
@@ -98,4 +88,5 @@ public class MypageController {
 			return "mypage/info/confirmPw";
 		}
 	}
+	
 }

@@ -8,7 +8,6 @@
 	<select resultMap="loginDto" id="infoLogin" parameterType="String">
 		SELECT * FROM login_homin WHERE id = #{id}
 	</select>
-	
 	<resultMap type="com.care.homin.membership.dto.MemberDTO" id="memberDto">
 		<result property="no" column="no"/>
 		<result property="id" column="id"/>
@@ -19,27 +18,14 @@
 	<select resultMap="memberDto" id="infoMember" parameterType="String">
 		SELECT * FROM member_homin WHERE id = #{id}
 	</select>
-	<resultMap type="com.care.homin.membership.dto.MemberDTO" id="mbDto">
-		<result property="no" column="no"/>
+	<resultMap type="com.care.homin.membership.dto.PostcodeDTO" id="postcodeDto">
 		<result property="id" column="id"/>
-		<result property="nickname" column="nickname"/>
-		<result property="phone" column="phone"/>
-		<result property="email" column="email"/>
+		<result property="zipcode" column="zipcode"/>
+		<result property="addr1" column="addr1"/>
+		<result property="addr2" column="addr2"/>
 	</resultMap>
-	<select resultMap="mbDto" id="infoMemberByNo" parameterType="int">
-		SELECT * FROM member_homin WHERE no = #{no}
-	</select>
-	
-	
-	<resultMap type="com.care.homin.membership.dto.MemberDTO" id="memberDtoList">
-		<result property="no" column="no"/>
-		<result property="id" column="id"/>
-		<result property="nickname" column="nickname"/>
-		<result property="phone" column="phone"/>
-		<result property="email" column="email"/>
-	</resultMap>
-	<select resultMap="memberDtoList" id="infoList">
-		SELECT * FROM member_homin
+	<select resultMap="postcodeDto" id="addr" parameterType="String">
+		SELECT * FROM postcode_homin WHERE id = #{id}
 	</select>
 	
 	<delete id="deleteProc" parameterType="String">

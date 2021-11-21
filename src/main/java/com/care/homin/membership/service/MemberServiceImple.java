@@ -62,9 +62,10 @@ public class MemberServiceImple implements IMemberService{
 			Random r = new Random();
 			String randNum = String.format("%06d", r.nextInt(1000000));
 			session.setAttribute("authNum", randNum);
-			session.setMaxInactiveInterval(180);
+			session.setMaxInactiveInterval(60);
 			mailService.sendMail(email, "[인증번호]", randNum);
 			logger.warn(randNum);
+			System.out.println(randNum);
 		}else
 			logger.warn("인증번호는 생성되어 있음");
 	}
@@ -82,4 +83,5 @@ public class MemberServiceImple implements IMemberService{
 		}
 		return "인증 실패";
 	}
+	
 }

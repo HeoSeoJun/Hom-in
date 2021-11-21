@@ -18,7 +18,7 @@ public class LoginServiceImpl implements ILoginService{
 		LoginDTO chk = loginDao.loginProc(loginDto.getId());
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		if (chk != null && encoder.matches(loginDto.getPw(), chk.getPw())) {
-//		회원가입 시 비밀번호 '암호화' 적용 후 활성화			
+//		회원가입 시 비밀번호 '암호화' 적용 후 활성화 후 기존 비활성			
 //		if (chk != null && loginDto.getPw().equals(chk.getPw())) {
 			MemberDTO mb = memberDao.memberProc(loginDto.getId());
 			return mb;

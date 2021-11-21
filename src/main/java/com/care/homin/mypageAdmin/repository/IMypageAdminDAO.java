@@ -1,4 +1,4 @@
-package com.care.homin.mypage.repository;
+package com.care.homin.mypageAdmin.repository;
 
 import java.util.ArrayList;
 
@@ -9,11 +9,16 @@ import com.care.homin.membership.dto.MemberDTO;
 import com.care.homin.membership.dto.PostcodeDTO;
 
 @Repository
-public interface IMypageDAO {
+public interface IMypageAdminDAO {
+
+	boolean deleteUser(String id);
+
+	ArrayList<MemberDTO> manageList();
+
 	LoginDTO infoLogin(String id);
-	MemberDTO infoMember(String id);
+
 	MemberDTO infoMemberByNo(int no);
-	ArrayList<MemberDTO> infoList();
-	boolean deleteProc(String id);
-	PostcodeDTO addr(String id);
+
+	ArrayList<PostcodeDTO> addrList();
+	
 }

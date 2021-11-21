@@ -85,6 +85,17 @@
 			}
 		}).open();
 	}
+	
+	function check() {
+		var pw = document.getElementById('pw').value;
+		var pwOk = document.getElementById('pwOk').value;
+		if (pw != pwOk) {
+			alert('패스워드가 일치하지 않습니다.');
+			return;
+		}
+		
+		document.getElementById('f').submit();
+	}
 </script>
 <script>
 	src="https//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
@@ -99,7 +110,7 @@
 	<h3>
 		<font color="red" id="msg">${msg }</font>
 	</h3>
-	<form action="memberProc" method="post">
+	<form action="memberProc" id="f" method="post">
 		<table>
 			<tr>
 				<td align='right' height=40 >아이디</td>
@@ -113,9 +124,9 @@
 			</tr>
 			<tr>
 				<td align='right' height=40>패스워드</td>
-				<td><input type="password" name='pw' placeholder='pw 입력' /></td>
+				<td><input type="password" name='pw' id="pw" placeholder='pw 입력' /></td>
 				<td align='right'>패스워드 확인</td>
-				<td><input type="password" name='pwOk' placeholder='pw 입력' /></td>
+				<td><input type="password" name='pwOk' id="pwOk" placeholder='pw확인 입력' /></td>
 			</tr>
 			<tr>
 				<td align='right' height=40>E-Mail</td>
@@ -146,7 +157,7 @@
 			</tr>
 			<tr>
 				<td align='center' height=40 colspan=4>
-				<input type=submit		value='가입' style="width: 120px;" /> 
+				<input type="button" value='가입' style="width: 120px;" onclick="check()"/> 
 				<input type=reset value='취소'	style="width: 120px;" /></td>
 			</tr>
 		</table>
